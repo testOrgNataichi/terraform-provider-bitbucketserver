@@ -70,6 +70,9 @@ func Provider() terraform.ResourceProvider {
 			"bitbucketserver_user":                         resourceUser(),
 			"bitbucketserver_user_access_token":            resourceUserAccessToken(),
 			"bitbucketserver_user_group":                   resourceUserGroup(),
+			"bitbucketserver_workzone_reviewers":           resourceWorkzoneReviewers(),
+			"bitbucketserver_workzone_workflow":            resourceWorkzoneWorkflow(),
+			"bitbucketserver_workzone_automerge":           resourceWorkzoneAutoMerge(),
 		},
 	}
 }

@@ -65,6 +65,7 @@ func (c *BitbucketClient) Do(method, endpoint string, payload *bytes.Buffer, con
 
 	if payload != nil {
 		if contentType != "" {
+			req.Header.Add("Accept", contentType) // It's required for proper Workzone API response
 			req.Header.Add("Content-Type", contentType)
 		} else {
 			req.Header.Add("Content-Type", "application/json")
@@ -230,4 +231,9 @@ func (c *BitbucketClient) PutOnly(endpoint string) (*http.Response, error) {
 
 func (c *BitbucketClient) Delete(endpoint string) (*http.Response, error) {
 	return c.Do("DELETE", endpoint, nil, "application/json")
+}
+
+// It's required for some DELETE requests to Workzone API
+func (c *BitbucketClient) DeleteWithBody(endpoint string, jsonpayload *bytes.Buffer) (*http.Response, error) {
+	return c.Do("DELETE", endpoint, jsonpayload, "application/json")
 }
