@@ -1,3 +1,5 @@
+This repository is a fork of [gavinbunney/terraform-provider-bitbucketserver](https://github.com/gavinbunney/terraform-provider-bitbucketserver) with resources that allow to manage the settings of Workzone plugin. Please use `git cherry-pick` to sync the repo with the origin if needed.
+
 # Bitbucket Server Terraform Provider
 
 [![user guide](https://img.shields.io/badge/-user%20guide-blue)](https://registry.terraform.io/providers/gavinbunney/bitbucketserver/latest)
@@ -71,4 +73,30 @@ Alternatively, you can manually start Bitbucket Server docker container, run the
 $ scripts/start-docker-compose.sh
 $ make testacc
 $ scripts/stop-docker-compose.sh
+```
+
+#### Testing on MacOS
+If you try to use `make testacc-bitbucket` locally on MacOS, the command will fail. You can use [act](https://github.com/nektos/act) tool to run acceptance tests via Github actions locally:
+
+```sh
+$ act -j testacc -s DOCKERHUB_USERNAME=provide_username -s DOCKERHUB_TOKEN=provide_password
+```
+
+### Using the provider locally
+```sh
+$ make build
+$ mkdir -p ~/.terraform.d/plugins/terraform.local/local/bitbucketserver/0.0.99/darwin_amd64/
+$ cp ~/go/bin/terraform-provider-bitbucketserver ~/.terraform.d/plugins/terraform.local/local/bitbucketserver/0.0.99/darwin_amd64/
+```
+
+Configure terraform to use the provider from local path:
+```hcl
+terraform {
+  required_providers {
+    bitbucketserver = {
+      source  = "terraform.local/local/bitbucketserver"
+      version = "0.0.99"
+    }
+  }
+}
 ```
