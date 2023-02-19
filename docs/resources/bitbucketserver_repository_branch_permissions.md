@@ -1,18 +1,18 @@
-# Resource: bitbucketserver_project_branch_permissions
+# Resource: bitbucketserver_repository_branch_permissions
 
-Provides the ability to apply project ref restrictions to enforce branch permissions. A restriction means preventing writes on the specified branch(es) by all except a set of users and/or groups, or preventing specific operations such as branch deletion.
+Provides the ability to apply ref restrictions to enforce branch permissions for an individual repository. A restriction means preventing writes on the specified branch(es) by all except a set of users and/or groups, or preventing specific operations such as branch deletion.
 
 ## Example Usage
 
 ```hcl
-resource "bitbucketserver_project_branch_permissions" "pr_only" {
+resource "bitbucketserver_repository_branch_permissions" "pr_only" {
   project          = "MYPROJ"
   repository       = "repo"
   ref_pattern      = "refs/heads/master"
   type             = "pull-request-only"
 }
 
-resource "bitbucketserver_project_branch_permissions" "no_deletes" {
+resource "bitbucketserver_repository_branch_permissions" "no_deletes" {
   project     = "MYPROJ"
   repository  = "repo"
   ref_pattern = "heads/**/master"

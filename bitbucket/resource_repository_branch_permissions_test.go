@@ -13,14 +13,14 @@ func TestAccBitbucketResourceBranchPermission_requiredArgumentsOnly(t *testing.T
 	projectKey := fmt.Sprintf("TEST%v", rand.New(rand.NewSource(time.Now().UnixNano())).Int())
 
 	config := baseConfigForRepositoryBasedTests(projectKey) + `
-	resource "bitbucketserver_project_branch_permissions" "test" {
+	resource "bitbucketserver_repository_branch_permissions" "test" {
 		project          = bitbucketserver_project.test.key
 		repository       = bitbucketserver_repository.test.slug
 		ref_pattern      = "refs/heads/master"
 		type             = "pull-request-only"
 	}`
 
-	resourceName := "bitbucketserver_project_branch_permissions.test"
+	resourceName := "bitbucketserver_repository_branch_permissions.test"
 
 	resource.Test(t, resource.TestCase{
 		PreCheck:  func() { testAccPreCheck(t) },
@@ -53,7 +53,7 @@ func TestAccBitbucketResourceBranchPermission_allArguments(t *testing.T) {
 		name = format("%s-%s", bitbucketserver_project.test.name, "2")
 	}
 
-	resource "bitbucketserver_project_branch_permissions" "test" {
+	resource "bitbucketserver_repository_branch_permissions" "test" {
 		project          = bitbucketserver_project.test.key
 		repository       = bitbucketserver_repository.test.slug
 		ref_pattern      = "refs/heads/master"
@@ -62,17 +62,17 @@ func TestAccBitbucketResourceBranchPermission_allArguments(t *testing.T) {
 		exception_groups = [bitbucketserver_group.test.name, bitbucketserver_group.test_2.name]
 	}
 
-	resource "bitbucketserver_project_branch_permissions" "test_2" {
+	resource "bitbucketserver_repository_branch_permissions" "test_2" {
 		project     = bitbucketserver_project.test.key
 		repository  = bitbucketserver_repository.test.slug
 		ref_pattern = "refs/heads/master"
 		type        = "no-deletes"
-		depends_on  = [bitbucketserver_project_branch_permissions.test]
+		depends_on  = [bitbucketserver_repository_branch_permissions.test]
 	}
 	`
 
-	resourceName := "bitbucketserver_project_branch_permissions.test"
-	resourceName2 := "bitbucketserver_project_branch_permissions.test_2"
+	resourceName := "bitbucketserver_repository_branch_permissions.test"
+	resourceName2 := "bitbucketserver_repository_branch_permissions.test_2"
 
 	resource.Test(t, resource.TestCase{
 		PreCheck:  func() { testAccPreCheck(t) },
