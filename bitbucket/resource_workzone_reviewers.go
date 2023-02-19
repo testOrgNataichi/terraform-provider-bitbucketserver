@@ -52,8 +52,7 @@ func GetUserFromApiByUsername(userName string, client *BitbucketClient) (User, e
 		json.Unmarshal(body, &user)
 		return user, nil
 	} else {
-		fmt.Errorf("failed to find user %s: %+v", userName, err)
-		return user, err
+		return user, fmt.Errorf("failed to find user %s: %+v", userName, err)
 	}
 }
 
