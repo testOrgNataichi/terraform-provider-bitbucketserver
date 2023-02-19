@@ -1,4 +1,4 @@
-This repository is a fork of [gavinbunney/terraform-provider-bitbucketserver](https://github.com/gavinbunney/terraform-provider-bitbucketserver) with resources that allow managing the settings of the Workzone plugin and a few more additional resources.
+This repository is a fork of [gavinbunney/terraform-provider-bitbucketserver](https://github.com/gavinbunney/terraform-provider-bitbucketserver) with resources that allows managing the settings of the Workzone plugin and a few more additional resources.
 
 # Bitbucket Server Terraform Provider
 
