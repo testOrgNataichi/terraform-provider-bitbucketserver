@@ -8,10 +8,7 @@ This terraform provider allows management of **Bitbucket Server** resources. The
 
 ## Using the provider
 
-Download a binary for your system from the release page and remove the `-os-arch` details so you're left with `terraform-provider-bitbucketserver`.
-Use `chmod +x` to make it executable and then either place it at the root of your Terraform folder or in the Terraform plugin folder on your system.
-
-See [User Guide](https://gavinbunney.github.io/terraform-provider-bitbucketserver) for details on all the provided data and resource types.
+See [User Guide](https://registry.terraform.io/providers/liamniou/bitbucketserver/latest) for details on all the provided data and resource types.
 
 ### Example
 

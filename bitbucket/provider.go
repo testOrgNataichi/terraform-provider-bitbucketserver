@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gavinbunney/terraform-provider-bitbucketserver/bitbucket/marketplace"
+	"github.com/liamniou/terraform-provider-bitbucketserver/bitbucket/marketplace"
 
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
